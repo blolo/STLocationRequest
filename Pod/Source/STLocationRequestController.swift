@@ -311,14 +311,13 @@ class STLocationRequestController: UIViewController, MKMapViewDelegate, CLLocati
 		Allow button was touched request authorization
 	*/
 	@IBAction func allowButtonTouched(sender: UIButton) {
-		self.locationManager.requestWhenInUseAuthorization()
+        NSNotificationCenter.defaultCenter().postNotificationName("locationRequestNow", object: nil)
 	}
 	
 	/*
 		Not now button was touched dismiss Viewcontroller
 	*/
 	@IBAction func notNowButtonTouched(sender: UIButton) {
-        self.delegate?.locationRequestNotNow()
-		self.dismissViewControllerAnimated(true, completion: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("locationRequestNotNow", object: nil)
 	}
 }
